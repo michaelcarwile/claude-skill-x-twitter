@@ -1,5 +1,5 @@
 ---
-name: mc-x-twitter
+name: claude-skill-x-twitter
 description: Interact with X (Twitter) API v2. Post tweets, search, engage, moderate, and analyze — all from your AI agent. Full 31-command skill for Twitter/X automation.
 license: MIT
 metadata:
