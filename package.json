@@ -1,5 +1,5 @@
 {
-  "name": "mc-x-twitter",
+  "name": "claude-skill-x-twitter",
   "version": "1.0.0",
   "description": "31-command Claude Code skill for X/Twitter — plain JS, no build step",
   "license": "MIT",
