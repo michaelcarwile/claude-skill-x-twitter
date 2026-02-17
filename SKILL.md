@@ -18,6 +18,7 @@ X (Twitter) API v2 skill using the authenticated user's own developer credential
 Core:
 a) `me` — authenticated user's own account data (profile, metrics, verification). @docs/me.md.
 b) `search` — search posts by query (last 7 days or full archive). @docs/search.md.
+b2) `batch-search` — search with multiple terms combined into optimized OR queries; auto-splits at the 512-char limit, deduplicates results. Prefer over multiple `search` calls. @docs/batch-search.md.
 c) `get` — retrieve one or more posts by ID. @docs/get.md.
 d) `post` — create a tweet, reply, or quote tweet. @docs/post.md.
 e) `delete` — delete a post owned by the authenticated user. @docs/delete.md.
@@ -61,5 +62,7 @@ ac) `reposts-of-me` — reposts of your posts by others. @docs/reposts-of-me.md.
 Discovery:
 ad) `search-users` — search users by query. @docs/search-users.md.
 ae) `trending` — trending topics (worldwide or personalized). @docs/trending.md.
+
+[!RATE-LIMITING] When searching for multiple related terms or concepts, always prefer `batch-search` over issuing multiple `search` calls. `batch-search` packs terms into the minimum number of API calls and deduplicates results. Aim to stay under 50% of rate limits — if you need more than 3 queries, consider narrowing terms or adding `--context` to reduce result volume. Never fire search calls in parallel; `batch-search` handles sequential execution automatically.
 
 [!CREDENTIALS] Four OAuth 1.0a variables are REQUIRED: `X_API_KEY`, `X_API_SECRET`, `X_ACCESS_TOKEN`, `X_ACCESS_TOKEN_SECRET`. They resolve from the first source that provides them: a) `.env.local` in cwd, b) `.env` in cwd, c) `.env.local` in the skill directory, d) `.env` in the skill directory, e) environment variables. Obtain them from the X Developer Console (Apps > Keys and tokens). One OPTIONAL variable: `X_API_BEARER_TOKEN` (OAuth 2.0 App-Only Bearer Token). When set, the client auto-selects Bearer auth for read endpoints that require it (e.g. full archive search with `--all`). Generate it from the X Developer Console (Apps > Keys and tokens > Bearer Token).

@@ -26,10 +26,12 @@ import { count } from "./commands/count.js";
 import { repostsOfMe } from "./commands/reposts-of-me.js";
 import { searchUsers } from "./commands/search-users.js";
 import { trending } from "./commands/trending.js";
+import { batchSearch } from "./commands/batch-search.js";
 
 const commands = {
   me,
   search,
+  "batch-search": batchSearch,
   get,
   post,
   delete: del,
